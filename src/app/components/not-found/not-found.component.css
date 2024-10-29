@@ -1,0 +1,17 @@
+#notFound{
+    font-size: 100px;
+}
+
+@media screen and (max-width:700px) {
+
+    #notFound{
+    font-size: 60px;
+}
+}
+
+@media screen and (max-width:400px) {
+
+    #notFound{
+    font-size: 40px;
+}
+}

@@ -1,0 +1,17 @@
+#add{
+    display: none;
+}
+
+.card-body:hover #add{
+    display: flex;
+    transition: 1s all;
+}
+
+.card{
+    height: 90%;
+}
+
+.card-body:hover{
+    height: 95%;
+    transition: 1s all;
+}

@@ -1,0 +1,29 @@
+img{
+    mix-blend-mode: multiply;
+}
+
+#add_to_cart{
+    opacity: 0;              
+    visibility: hidden;  }
+
+.image-wrapper:hover  #add_to_cart{
+   
+    opacity: 1;                
+    visibility: visible;   
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#sizes .btn:hover ,.input-group .btn:hover {
+    background-color: #dc3545;
+    border:none;
+    transition: 0.5s all;
+}
+.input-group ,#buyBtn{
+    width: 25%;
+}
+
+@media screen and (max-width:400px) {
+    .input-group ,#buyBtn{
+        width: 70% !important;
+    }
+}

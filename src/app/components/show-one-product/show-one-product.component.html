@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <!-- ========== Start Show One Product Section ========== -->
+        <section class="my-5 container">
+            <div class="row pt-5 align-items-stretch">
+                <!-- Left Side -->
+                <div class="col-md-7 col-sm-6 d-flex">
+                    <!-- Gallery of product -->
+                    <div class="row align-items-stretch gy-4">
+                        <!-- 4 Small photos -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="bg-body-secondary d-flex justify-content-center p-3 rounded-2"><img [src]='product.image' class="w-50" style="mix-blend-mode: multiply;"/></div>
+                            <div class="bg-body-secondary d-flex justify-content-center p-3 rounded-2 my-3"><img [src]='product.image' class="w-50" style="mix-blend-mode: multiply;"/></div>
+                            <div class="bg-body-secondary d-flex justify-content-center p-3 rounded-2"><img [src]='product.image' class="w-50" style="mix-blend-mode: multiply;"/></div>
+                            <div class="bg-body-secondary d-flex justify-content-center p-3 rounded-2 mt-3"><img [src]='product.image' class="w-50" style="mix-blend-mode: multiply;"/></div>
+                        </div>
+                        <!-- End of 4 Small photos -->
+
+                        <!-- Big photo-->
+                        <div class="col-md-8 col-sm-6" style="object-fit: fill;">
+                            <div class="bg-body-secondary d-flex justify-content-center p-5 rounded-2  align-items-center">
+                                <img [src]='product.image' class="w-100" style="height:max-content;"/>
+                            </div>
+
+                        </div>
+                        <!-- End of Big photo -->
+
+                    </div>
+                    <!-- End of Gallery of product -->
+                </div>
+                <!-- End Left Side -->
+
+                <div class="col-md-5 col-sm-6 ">
+                    <h2 class="py-2">{{product.title}}</h2>
+                    <div *ngFor="let star of get(product.rating.rate)" class="d-inline pb-5">
+                        <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div> <span>( {{product.rating.count}} Reviews ) | <span class="text-success">In Stock</span></span>
+                    <p class="fs-4 fw-bold my-4">{{product.price | currency:'USD'}}</p>
+                    <p class="pb-2">{{product.description}}</p>
+                    <hr>
+
+                    <div class="d-flex my-3">
+                        <span>Colours : </span><span><i class="fa-solid fa-circle mx-3 text-danger"></i> <i class="fa-solid fa-circle text-info"></i></span>
+                    </div>
+                   <!-- Sizes -->
+                    <div class="d-flex justify-content-between w-75" id="sizes">
+                        <span>Sizes : </span>
+                        <button class="btn btn-outline-dark">XS</button>
+                        <button class="btn btn-outline-dark">S</button>
+                        <button class="btn btn-outline-dark">M</button>
+                        <button class="btn btn-outline-dark">L</button>
+                        <button class="btn btn-outline-dark">XL</button>
+                    </div>
+                    <!-- End of Sizes -->
+
+
+<div class="d-flex my-5 justify-content-center">
+    <div class="input-group text-center">
+        <button class="input-group-text btn btn-outline-dark" (click)="decrease()" [disabled]="inputValue===1">-</button>
+        <input type="text" class="form-control text-center border-black" [value]="inputValue" [(ngModel)]="inputValue">
+        <button class="input-group-text btn btn-outline-dark" (click)="increase()">+</button>
+      </div>
+      <button class="btn btn-danger mx-5" id="buyBtn" (click)="AddToCartt(product,inputValue)">Buy Now</button>
+      <button class="btn btn-outline-dark" (click)="AddToWishListt(product)"><i class="fa-regular fa-heart "></i></button>
+</div>
+
+<div class="d-flex justify-content-center align-items-center  border border-2 rounded-3 p-4 ">
+    <div>
+        <div class="d-flex ">
+            <div>
+                <i class="fa-solid fa-truck fs-1"></i>
+            </div>
+            <div class="ms-3">
+                <p class="fs-5 fw-bold">Free Delivery</p>
+                <p>Enter your postal code for Delivery Availability</p>
+            </div>
+        </div>
+        
+        <div class="d-flex mt-4">
+
+            <div>
+                <i class="fa-solid fa-rotate fs-1"></i>
+            </div>
+            <div class="ms-3">
+                <p class="fs-5 fw-bold">Return Delivery</p>
+                <p>Free 30 Days Delivery Returns. Details</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+
+            </div>
+
+        </section>
+       
+       <!-- ========== End Show One Product Section ========== -->
+
+
+       <!-- ========== Start Related Item Section ========== -->
+        <section class="my-5 container" id="related_items">
+     
+            <div class="d-flex align-items-center title-section">
+                <div class="vertical-bar bg-danger rounded-2"></div>
+                <span class="category-text text-danger fw-bold fs-5">Related Items</span>
+              </div>
+              
+            
+      <div class="mt-5">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let slide of RelatedItems">
+            <ng-template carouselSlide>
+              <div
+                class="image-wrapper position-relative"
+                style="
+                  background-color: #f0f0f0;
+                  padding: 50px;
+                  display: flex;
+                  justify-content: center;
+                  height:60%;
+                "
+              >
+                <img
+                  [src]="slide.image"
+                  class="w-100"
+                  style="mix-blend-mode: multiply;cursor: pointer;"
+                />
+                <!-- Discount on the image -->
+                <div class="position-absolute bg-danger py-1 px-3 rounded-3 text-white discount" >-23%</div>
+                <!-- End of Discount on the image -->
+
+                <!-- Heart and eye on the image -->
+                 <div class="position-absolute heart_eye">
+                    <div title="Add to wishlist" (click)="AddToWishListt(slide)" class="mb-2" id="add_to_wishlist"><i class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"></i></div>
+                    <a class="text-black" title="Show now" (click)="show(slide.id)"><i class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"></i></a>
+
+                 </div>
+
+                <!-- End of Heart and eye on the image -->
+
+                <!-- Add To cart button -->
+                <div class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center" id="add_to_cart" (click)="AddToCartt(slide,1)">
+                  <span class="text-center bg-black text-white fs-5 w-100  ">Add To Cart</span>
+                </div>
+                 <!-- End of Add To cart button -->
+              </div>
+              
+              <div class="pt-3">
+                <h5>{{ slide.title }}</h5>
+               
+                <p class="text-danger fw-bold">
+                  {{ slide.price | currency:"USD"}}<span class="text-muted ps-3 text-decoration-line-through">{{slide.price | currency:"USD"}}</span>
+                </p>
+
+                <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                  <i class="fa-solid fa-star text-warning mx-1"></i>
+              </div> <span>( {{slide.rating.count}} )</span>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+
+       
+      </div>
+
+        </section>
+       
+       <!-- ========== End Related Item Section ========== -->
+       
+       
+        
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <!-- ========== Start Login Section ========== -->
+        <section class="my-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 " id="side">
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 p-4 ">
+                        <div class="container pt-3" id="right_side">
+                            <p class="text-danger fs-4 pb-3" *ngIf="!isExist">The account isn't exist</p>
+
+                            <h2 class="fs-1">Log in to Exclusive</h2>
+                        <p class="py-3 fw-bold">Enter your details below</p>
+                        <form [formGroup]="LoginForm" (ngSubmit)="Login(LoginForm)">
+                          
+                            <div class="pb-5 pt-3">
+                                <input type="email" class="form-control p-3" placeholder="Email or Phone number" formControlName="email"/>
+                                <div class="alert alert-danger" *ngIf="LoginForm.get('email')?.errors&&LoginForm.get('email')?.touched">
+                                    <p *ngIf="LoginForm.get('email')?.getError('required')">Required Field</p>
+                                    <p *ngIf="LoginForm.get('email')?.getError('email')">Email is invalid </p>
+                                  </div>
+                            </div>
+                            <div>
+                                <input type="password" class="form-control p-3" placeholder="Password" formControlName="password"/>
+                                <div class="alert alert-danger" *ngIf="LoginForm.get('password')?.errors&&LoginForm.get('password')?.touched">
+                                    <p *ngIf="LoginForm.get('password')?.getError('required')">Required Field</p>
+                                  </div>
+                                  <div class="alert alert-danger" *ngIf="!Matched">
+                                    
+                                    <p >The password is incorrect.</p>
+                                    
+                                  </div>
+                            </div>
+
+                            
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <button class="btn btn-danger mt-5 mb-3  p-3" [disabled]="LoginForm.invalid">Login</button>
+                                    <a routerLink="/forgetPassword" class="text-danger pt-3  text-decoration-none">Forget password ? </a>
+                                </div>
+                        </form>
+                        </div>
+
+                       
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+       
+       <!-- ========== End Login Section ========== -->
+       
+        <script src="" async defer></script>
+    </body>
+</html>

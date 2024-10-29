@@ -1,0 +1,61 @@
+.form-control,.input-group-text {
+
+    border: none;
+ 
+}
+nav a i{
+    color:black
+}
+nav a{
+    text-decoration: none;
+}
+.activee{
+border-bottom:1px solid black
+}
+
+
+.dropdown-toggle::after {
+
+    content:unset;
+
+}
+
+
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+    color: white;
+    background-color: #dc3545;
+    border:none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.navbar .input-group{
+    width: 20%;
+}
+#wishlist_icon{
+    margin-left: 0.65rem;
+}
+.nav_icon{
+    margin: 0rem 0.65rem;
+}
+
+#home-link{
+    margin-left: 5%;
+}
+@media screen and (max-width:1000px) {
+    .navbar .input-group{
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .navbar{
+        text-align: center;
+    }
+
+    #home-link{
+        margin-left: 0%;
+    }
+
+   
+}

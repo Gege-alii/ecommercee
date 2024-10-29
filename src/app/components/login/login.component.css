@@ -1,0 +1,36 @@
+.form-control{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0%;
+}
+
+body{
+    font-family: sans-serif;
+
+}
+
+
+#side{
+    background-image: url('../../../assets/signup_login.jfif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#login_btn{
+
+    color: black;
+    text-decoration: none;
+    padding-bottom: 2%;
+    border-bottom: 1px solid black;
+}
+
+#right_side{
+width: 65%;
+}
+@media screen and (max-width:500px) {
+    
+    #right_side{
+        width: 100%;
+        }
+}

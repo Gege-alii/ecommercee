@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+          <!-- Back to top button-->
+          <div id="fixed-arrow" class="position-fixed bottom-75 " style="cursor: pointer;right:4%;z-index: 999;">
+            <i class="fa-solid fa-arrow-up  fs-5 p-2 rounded-5"  style="background-color:rgb(240, 240, 240)"></i>
+          </div>
+          <!-- End of Back to top button-->
+
+    <!-- ========== Start First ( Hero ) Section ========== -->
+    <section class="mb-5 pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-sm-12" id="category_first_section">
+            <ul class="list-unstyled mt-5">
+              <li>Woman’s Fashion <i class="fa-solid fa-chevron-right ps-2"></i></li>
+              <li class="py-4">Men’s Fashion <i class="fa-solid fa-chevron-right ps-4"></i></li>
+              <li>Electronics</li>
+              <li class="py-4">Home & Lifestyle</li>
+              <li>Medicine</li>
+              <li class="py-4">Sports & Outdoor</li>
+              <li>Baby’s & Toys</li>
+              <li class="py-4">Groceries & Pets</li>
+              <li>Health & Beauty</li>
+            </ul>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-9 col-sm-12 bg-black mt-5">
+            <div class="row">
+              <div
+                class="col-md-6 col-sm-12 p-5 text-white d-flex justify-content-center align-items-center"
+              >
+                <div>
+                  <i class="fa-brands fa-apple fs-2 me-3"></i> iPhone 14 Series
+                  <h1 class="py-4" id="title">Up to 10% off Voucher</h1>
+                  <a>Shop Now</a> <i class="fa-solid fa-arrow-right ms-2"></i>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 pt-4">
+                <img src="../../../assets/home.jfif" class="w-100" />
+              </div>
+            </div>
+
+            <div class="text-center pb-3">
+              <i class="fa-solid fa-circle"></i>
+              <i class="fa-solid fa-circle mx-2"></i>
+              <i class="fa-solid fa-circle text-danger"></i>
+              <i class="fa-solid fa-circle mx-2"></i>
+              <i class="fa-solid fa-circle"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== End First ( Hero ) Section ========== -->
+
+    <!-- ========== Start Flash Sales Section ========== -->
+    <section class="my-5 container" id="flash_section">
+      <div class="d-flex align-items-center title-section">
+        <div class="vertical-bar bg-danger rounded-2"></div>
+        <span class="category-text text-danger fw-bold fs-5">Today's</span>
+      </div>
+      
+
+      <div class=" fw-bold " id="flash_sales_container">
+        <div><h2 class="py-4 fw-bold">Flash Sales</h2></div>
+     <div id="Counter">
+      <div id="days">
+        <span>Days</span>
+        <p>03</p>
+      </div>
+      <span class="ms-2 text-danger fs-1"> : </span>
+
+      <div class="mx-3">
+        <span>Hours</span>
+        <p>23</p>
+      </div>
+      <span class="me-2 text-danger fs-1"> : </span>
+
+      <div>
+        <span>Minutes</span>
+        <p>19 </p>
+      </div>
+      <span class="ms-2 text-danger fs-1"> : </span>
+      <div class="ms-3">
+        <span>Seconds</span>
+        <p>56</p>
+      </div>   
+     </div>     
+
+      </div>
+      <!-- OWl Carosuel -->
+      <div class="mt-5">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let slide of AllProducts">
+            <ng-template carouselSlide>
+              <div
+                class="image-wrapper position-relative"
+                style="
+                  background-color: #f0f0f0;
+                  padding: 50px;
+                  display: flex;
+                  justify-content: center;
+                  height:60%;
+                "
+              >
+                <img
+                  [src]="slide.image"
+                  class="w-100"
+                  style="mix-blend-mode: multiply;cursor: pointer;"
+                />
+                <!-- Discount on the image -->
+                <div class="position-absolute bg-danger py-1 px-3 rounded-3 text-white discount" >- 40%</div>
+                <!-- End of Discount on the image -->
+
+                <!-- Heart and eye on the image -->
+                 <div class="position-absolute heart_eye">
+                    <div title="Add to wishlist" (click)="AddToWishListt(slide)" class="mb-2" id="add_to_wishlist"><i class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"></i></div>
+                    <a class="text-black" title="Show now" [routerLink]="['/product', slide.id]"><i class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"></i></a>
+
+                 </div>
+
+                <!-- End of Heart and eye on the image -->
+
+                <!-- Add To cart button -->
+                <div class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center" id="add_to_cart" (click)="AddToCartt(slide)" title="Add To Cart">
+                  <span class="text-center bg-black text-white fs-5 w-100  ">Add To Cart</span>
+                </div>
+                 <!-- End of Add To cart button -->
+              </div>
+              
+              <div class="pt-3">
+                <h5>{{ slide.title }}</h5>
+               
+                <p class="text-danger fw-bold">
+                  {{ slide.price | currency:"USD"}}<span class="text-muted ps-3 text-decoration-line-through">{{slide.price | currency:"USD"}}</span>
+                </p>
+
+                <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                  <i class="fa-solid fa-star text-warning mx-1"></i>
+              </div> <span>( {{slide.rating.count}} )</span>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+
+       
+      </div>
+      <!-- End of OWl Carosuel -->
+
+      <!-- View all products button -->
+      <div class="d-flex justify-content-center align-items-center pb-5 pt-2">
+        <a class="btn btn-danger px-4 py-3 rounded-0" routerLink="/products">
+          View All Products
+        </a>
+      </div>
+    <!-- End of View all products button -->
+
+      <hr />
+    </section>
+    <!-- ========== End Flash Sales Section ========== -->
+
+    <!-- ========== Start Browse By Category Section ========== -->
+    <section class="my-5 container" id="category_section">
+      <div class="d-flex align-items-center title-section">
+        <div class="vertical-bar bg-danger rounded-2"></div>
+        <span class="category-text text-danger fw-bold fs-5">Category</span>
+      </div>
+      <h2 class="py-4 fw-bold">Browse By Category</h2>
+
+      <div class="my-5">
+        <owl-carousel-o [options]="customOptionss">
+          <ng-container *ngFor="let slide of CustomCategories">
+            <ng-template carouselSlide>
+              <div class="text-center fs-3 p-4 border rounded-3" id="category_card">
+               <a [routerLink]="slide.link" class="text-decoration-none ">
+                <i [class]="slide.icon"></i>
+                <p class="pt-2 fs-6">{{ slide.name }}</p>
+               </a>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+      <hr />
+    </section>
+
+    <!-- ========== End Browse By Category Section ========== -->
+
+    <!-- ========== Start Best Selling Section ========== -->
+    <section class="my-5 container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="d-flex align-items-center title-section">
+            <div
+              class="vertical-bar bg-danger rounded-2"
+              style="width: 6%"
+            ></div>
+            <span class="category-text text-danger fw-bold fs-5"
+              >This Month</span
+            >
+          </div>
+          <h2 class="py-4 fw-bold">Best Selling Products</h2>
+        </div>
+
+        <div>
+          <a class="btn btn-danger px-5 py-3" routerLink="/products"
+            >View All</a
+          >
+        </div>
+      </div>
+
+      <div class="mt-5"> 
+     <div class="row gy-4">
+      <div class="col-md-3 col-sm-6" *ngFor="let slide of FourProducts ">
+        <div
+        class="image-wrapper position-relative"
+        style="
+          background-color: #f0f0f0;
+          padding: 50px;
+          display: flex;
+          justify-content: center;
+          height: 60%;
+        "
+      >
+        <img
+          [src]="slide.image"
+          class="w-100"
+          style="mix-blend-mode: multiply; cursor: pointer"
+        />
+
+        <!-- Heart and eye on the image -->
+        <div class="position-absolute heart_eye">
+          <div
+            title="Add to wishlist"
+            (click)="AddToWishListt(slide)"
+            class="mb-2"
+          >
+            <i
+              class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+            ></i>
+          </div>
+          <a
+            class="text-black"
+            title="Show now"
+            [routerLink]="['/product', slide.id]"
+            ><i
+              class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+            ></i
+          ></a>
+        </div>
+
+        <!-- End of Heart and eye on the image -->
+
+        <!-- Add To cart button -->
+        <div
+          class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+          id="add_to_cart" (click)="AddToCartt(slide)"
+        >
+          <span class="text-center bg-black text-white fs-5 w-100"
+            >Add To Cart</span
+          >
+        </div>
+        <!-- End of Add To cart button -->
+      </div>
+
+      <div class="pt-3">
+        <h5>{{ slide.title }}</h5>
+
+        <p class="text-danger fw-bold">
+          {{ slide.price | currency : "USD"
+          }}
+          
+        </p>
+
+        <div
+          *ngFor="let star of get(slide.rating.rate)"
+          class="d-inline pb-5"
+        >
+          <i class="fa-solid fa-star text-warning mx-1"></i>
+        </div>
+        <span>( {{ slide.rating.count }} )</span>
+      </div>
+      </div>
+
+     </div>
+      </div>
+    </section>
+    <!-- ========== End Best Selling Section ========== -->
+
+    <!-- ========== Start Enhance Your Music Experience Section ========== -->
+    <section
+      class="my-5 container bg-black"
+      id="Enhance_Your_Music_Experience_section"
+    >
+      <div class="row gy-4 d-flex align-items-center">
+        <div class="col-md-6 col-sm-12 p-5">
+          <p style="color: #00ff66">Categories</p>
+          <p class="text-white" id="title">Enhance Your Music Experience</p>
+          <div class="d-flex align-items-center">
+            <div class="text-center bg-white white_circles pt-2">
+              <span>23</span>
+              <p>Hours</p>
+            </div>
+
+            <div class="text-center bg-white white_circles pt-2 ">
+              <span>05</span>
+              <p>Days</p>
+            </div>
+
+            <div class="text-center bg-white white_circles pt-2 ">
+              <span>59</span>
+              <p>Minutes</p>
+            </div>
+
+            <div class="text-center bg-white white_circles pt-2">
+              <span>35</span>
+              <p>Seconds</p>
+            </div>
+          </div>
+          <button class="btn px-5 py-3 mt-5">Buy Now!</button>
+        </div>
+
+        <div class="col-md-6 col-sm-12" id="shadow_container">
+          <img
+            src="../../../assets/Enhance_section.png"
+            class="w-100"
+            style="
+              transform: rotateY(180deg);
+              filter: drop-shadow(20px 40px 100px rgba(245, 245, 245, 0.596));
+            "
+            id="shadow-image"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- ========== End Enhance Your Music Experience Section ========== -->
+
+    <!-- ========== Start Explore Our Products Section ========== -->
+    <section class="my-5 container" id="Explore_Our_Products_Section">
+      <div class="d-flex align-items-center title-section pt-5">
+        <div class="vertical-bar bg-danger rounded-2"></div>
+        <span class="category-text text-danger fw-bold fs-5">Our Products</span>
+      </div>
+<div class="d-flex justify-content-between">
+  <div>      
+    <h2 class="py-4 fw-bold">Explore Our Products</h2>  
+  </div>
+  <div>
+    <i class="fa-solid fa-arrow-left bg-body-tertiary p-3 rounded-5 fs-4 me-2"  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"></i>
+
+    <i class="fa-solid fa-arrow-right bg-body-tertiary p-3 rounded-5 fs-4" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"></i>
+  </div>
+</div>
+    
+      <div id="carouselExampleIndicators" class="carousel slide position-relative">
+
+        <div class="carousel-inner" >
+          <div class="carousel-item active">
+            <div class="row gy-5">
+              <div class="col-md-3 col-sm-6" *ngFor="let slide of FourProducts">
+                <!-- Row One -->
+                <div>
+                  <div
+                    class="image-wrapper position-relative"
+                    style="
+                      background-color: #f0f0f0;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 300px;
+                    "
+                  >
+                    <!-- Enforce same dimensions and fit -->
+                    <img
+                      [src]="slide.image"
+                      class="w-100 h-100"
+                      style="object-fit: contain; cursor: pointer;mix-blend-mode: multiply"
+                    />
+      
+                    <!-- Heart and eye on the image -->
+                    <div class="position-absolute heart_eye">
+                      <div
+                        title="Add to wishlist"
+                        (click)="AddToWishListt(slide)"
+                        class="mb-2"
+                      >
+                        <i
+                          class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+                        ></i>
+                      </div>
+                      <a
+                        class="text-black"
+                        title="Show now"
+                        [routerLink]="['/product', slide.id]"
+                        ><i
+                          class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+                        ></i
+                      ></a>
+                    </div>
+      
+                    <!-- End of Heart and eye on the image -->
+      
+                    <!-- Add To cart button -->
+                    <div
+                      class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+                      id="add_to_cart" (click)="AddToCartt(slide)"
+                    >
+                      <span class="text-center bg-black text-white fs-5 w-100"
+                        >Add To Cart</span
+                      >
+                    </div>
+                    <!-- End of Add To cart button -->
+                  </div>
+      
+                  <div class="pt-3">
+                    <h5>{{ slide.title }}</h5>
+                    <p class="text-danger fw-bold">{{ slide.price | currency : "USD" }}</p>
+                    <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                      <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div>
+                    <span>( {{ slide.rating.count }} )</span>
+                  </div>
+                </div>
+                <!-- End of Row one-->
+              </div>
+
+
+              <div class="col-md-3 col-sm-6 " *ngFor="let slide of FourProducts">
+                <!-- Row One -->
+                <div>
+                  <div
+                    class="image-wrapper position-relative"
+                    style="
+                      background-color: #f0f0f0;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 300px;
+                    "
+                  >
+                    <!-- Enforce same dimensions and fit -->
+                    <img
+                      [src]="slide.image"
+                      class="w-100 h-100"
+                      style="object-fit: contain; cursor: pointer;mix-blend-mode: multiply"
+                    />
+      
+                    <!-- Heart and eye on the image -->
+                    <div class="position-absolute heart_eye">
+                      <div
+                        title="Add to wishlist"
+                        (click)="AddToWishListt(slide)"
+                        class="mb-2"
+                      >
+                        <i
+                          class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+                        ></i>
+                      </div>
+                      <a
+                        class="text-black"
+                        title="Show now"
+                        [routerLink]="['/product', slide.id]"
+                        ><i
+                          class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+                        ></i
+                      ></a>
+                    </div>
+      
+                    <!-- End of Heart and eye on the image -->
+      
+                    <!-- Add To cart button -->
+                    <div
+                      class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+                      id="add_to_cart" (click)="AddToCartt(slide)"
+                    >
+                      <span class="text-center bg-black text-white fs-5 w-100"
+                        >Add To Cart</span
+                      >
+                    </div>
+                    <!-- End of Add To cart button -->
+                  </div>
+      
+                  <div class="pt-3">
+                    <h5>{{ slide.title }}</h5>
+                    <p class="text-danger fw-bold">{{ slide.price | currency : "USD" }}</p>
+                    <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                      <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div>
+                    <span>( {{ slide.rating.count }} )</span>
+                  </div>
+                </div>
+                <!-- End of Row one-->
+              </div>
+            </div>
+          </div>
+      
+          <div class="carousel-item">
+            <div class="row gy-5">
+              <div class="col-md-3 col-sm-6" *ngFor="let slide of FourProducts">
+                <!-- Row One -->
+                <div>
+                  <div
+                    class="image-wrapper position-relative"
+                    style="
+                      background-color: #f0f0f0;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 300px;
+                    "
+                  >
+                    <!-- Enforce same dimensions and fit -->
+                    <img
+                      [src]="slide.image"
+                      class="w-100 h-100"
+                      style="object-fit: contain; cursor: pointer;mix-blend-mode: multiply"
+                    />
+      
+                    <!-- Heart and eye on the image -->
+                    <div class="position-absolute heart_eye">
+                      <div
+                        title="Add to wishlist"
+                        (click)="AddToWishListt(slide)"
+                        class="mb-2"
+                      >
+                        <i
+                          class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+                        ></i>
+                      </div>
+                      <a
+                        class="text-black"
+                        title="Show now"
+                        [routerLink]="['/product', slide.id]"
+                        ><i
+                          class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+                        ></i
+                      ></a>
+                    </div>
+      
+                    <!-- End of Heart and eye on the image -->
+      
+                    <!-- Add To cart button -->
+                    <div
+                      class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+                      id="add_to_cart" (click)="AddToCartt(slide)"
+                    >
+                      <span class="text-center bg-black text-white fs-5 w-100"
+                        >Add To Cart</span
+                      >
+                    </div>
+                    <!-- End of Add To cart button -->
+                  </div>
+      
+                  <div class="pt-3">
+                    <h5>{{ slide.title }}</h5>
+                    <p class="text-danger fw-bold">{{ slide.price | currency : "USD" }}</p>
+                    <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                      <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div>
+                    <span>( {{ slide.rating.count }} )</span>
+                  </div>
+                </div>
+                <!-- End of Row one-->
+              </div>
+
+
+              <div class="col-md-3 col-sm-6 " *ngFor="let slide of FourProducts">
+                <!-- Row One -->
+                <div>
+                  <div
+                    class="image-wrapper position-relative"
+                    style="
+                      background-color: #f0f0f0;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 300px;
+                    "
+                  >
+                    <!-- Enforce same dimensions and fit -->
+                    <img
+                      [src]="slide.image"
+                      class="w-100 h-100"
+                      style="object-fit: contain; cursor: pointer;mix-blend-mode: multiply"
+                    />
+      
+                    <!-- Heart and eye on the image -->
+                    <div class="position-absolute heart_eye">
+                      <div
+                        title="Add to wishlist"
+                        (click)="AddToWishListt(slide)"
+                        class="mb-2"
+                      >
+                        <i
+                          class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+                        ></i>
+                      </div>
+                      <a
+                        class="text-black"
+                        title="Show now"
+                        [routerLink]="['/product', slide.id]"
+                        ><i
+                          class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+                        ></i
+                      ></a>
+                    </div>
+      
+                    <!-- End of Heart and eye on the image -->
+      
+                    <!-- Add To cart button -->
+                    <div
+                      class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+                      id="add_to_cart" (click)="AddToCartt(slide)"
+                    >
+                      <span class="text-center bg-black text-white fs-5 w-100"
+                        >Add To Cart</span
+                      >
+                    </div>
+                    <!-- End of Add To cart button -->
+                  </div>
+      
+                  <div class="pt-3">
+                    <h5>{{ slide.title }}</h5>
+                    <p class="text-danger fw-bold">{{ slide.price | currency : "USD" }}</p>
+                    <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                      <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div>
+                    <span>( {{ slide.rating.count }} )</span>
+                  </div>
+                </div>
+                <!-- End of Row one-->
+              </div>
+            </div>
+          </div>
+         
+
+          <div class="carousel-item ">
+            <div class="row gy-5">
+              <div class="col-md-3 col-sm-6" *ngFor="let slide of FourProducts">
+                <!-- Row One -->
+                <div>
+                  <div
+                    class="image-wrapper position-relative"
+                    style="
+                      background-color: #f0f0f0;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 300px;
+                    "
+                  >
+                    <!-- Enforce same dimensions and fit -->
+                    <img
+                      [src]="slide.image"
+                      class="w-100 h-100"
+                      style="object-fit: contain; cursor: pointer;mix-blend-mode: multiply"
+                    />
+      
+                    <!-- Heart and eye on the image -->
+                    <div class="position-absolute heart_eye">
+                      <div
+                        title="Add to wishlist"
+                        (click)="AddToWishListt(slide)"
+                        class="mb-2"
+                      >
+                        <i
+                          class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+                        ></i>
+                      </div>
+                      <a
+                        class="text-black"
+                        title="Show now"
+                        [routerLink]="['/product', slide.id]"
+                        ><i
+                          class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+                        ></i
+                      ></a>
+                    </div>
+      
+                    <!-- End of Heart and eye on the image -->
+      
+                    <!-- Add To cart button -->
+                    <div
+                      class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+                      id="add_to_cart" (click)="AddToCartt(slide)"
+                    >
+                      <span class="text-center bg-black text-white fs-5 w-100"
+                        >Add To Cart</span
+                      >
+                    </div>
+                    <!-- End of Add To cart button -->
+                  </div>
+      
+                  <div class="pt-3">
+                    <h5>{{ slide.title }}</h5>
+                    <p class="text-danger fw-bold">{{ slide.price | currency : "USD" }}</p>
+                    <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                      <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div>
+                    <span>( {{ slide.rating.count }} )</span>
+                  </div>
+                </div>
+                <!-- End of Row one-->
+              </div>
+
+
+              <div class="col-md-3 col-sm-6 " *ngFor="let slide of FourProducts">
+                <!-- Row One -->
+                <div>
+                  <div
+                    class="image-wrapper position-relative"
+                    style="
+                      background-color: #f0f0f0;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 300px;
+                    "
+                  >
+                    <!-- Enforce same dimensions and fit -->
+                    <img
+                      [src]="slide.image"
+                      class="w-100 h-100"
+                      style="object-fit: contain; cursor: pointer;mix-blend-mode: multiply"
+                    />
+      
+                    <!-- Heart and eye on the image -->
+                    <div class="position-absolute heart_eye">
+                      <div
+                        title="Add to wishlist"
+                        (click)="AddToWishListt(slide)"
+                        class="mb-2"
+                      >
+                        <i
+                          class="fa-regular fa-heart fs-5 bg-white p-2 rounded-5"
+                        ></i>
+                      </div>
+                      <a
+                        class="text-black"
+                        title="Show now"
+                        [routerLink]="['/product', slide.id]"
+                        ><i
+                          class="fa-regular fa-eye fs-5 bg-white p-2 rounded-5"
+                        ></i
+                      ></a>
+                    </div>
+      
+                    <!-- End of Heart and eye on the image -->
+      
+                    <!-- Add To cart button -->
+                    <div
+                      class="position-absolute bottom-0 w-100 end-0 start-0 d-flex justify-content-center align-items-center"
+                      id="add_to_cart" (click)="AddToCartt(slide)"
+                    >
+                      <span class="text-center bg-black text-white fs-5 w-100"
+                        >Add To Cart</span
+                      >
+                    </div>
+                    <!-- End of Add To cart button -->
+                  </div>
+      
+                  <div class="pt-3">
+                    <h5>{{ slide.title }}</h5>
+                    <p class="text-danger fw-bold">{{ slide.price | currency : "USD" }}</p>
+                    <div *ngFor="let star of get(slide.rating.rate)" class="d-inline pb-5">
+                      <i class="fa-solid fa-star text-warning mx-1"></i>
+                    </div>
+                    <span>( {{ slide.rating.count }} )</span>
+                  </div>
+                </div>
+                <!-- End of Row one-->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+      
+
+      <!-- View all products button -->
+      <div class="d-flex justify-content-center align-items-center pb-5 pt-2 mt-5">
+        <a class="btn btn-danger px-4 py-3 rounded-0" routerLink="/products">
+          View All Products
+        </a>
+      </div>
+    <!-- End of View all products button -->
+
+      <hr />
+    </section>
+
+    <!-- ========== End Explore Our Products Section ========== -->
+
+    <!-- ========== Start New Arrival Section ========== -->
+    <section class="my-5 container">
+      <div class="d-flex align-items-center title-section">
+        <div class="vertical-bar bg-danger rounded-2"></div>
+        <span class="category-text text-danger fw-bold fs-5">Featured</span>
+      </div>
+      <h2 class="py-4 fw-bold">New Arrival</h2>
+
+      <div class="row gy-3">
+        <div
+          class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center bg-black "
+          style="height: fit-content"
+        >
+          <div class="position-relative">
+            <img src="../../../assets/newArrival1.png" class="w-100 pt-5" />
+
+            <div class="position-absolute text-white" style="bottom:3%;left:3%">
+              <p class="fs-5 fw-bold">PlayStation 5</p>
+              <p class="w-75 text-secondary">Black and White version of the PS5 coming out on sale.</p>
+              <p class="shop_now ">Shop Now</p>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-sm-12 ">
+          
+            <div class="position-relative bg-black">
+              <img
+                src="../../../assets/newArrival2.jfif"
+                class="w-100"
+                style="transform: rotateY(180deg); height: 326px"
+              />
+              <div class="position-absolute text-white" style="bottom:3%;left:3%">
+                <p class="fs-5 fw-bold">Women’s Collections</p>
+                <p class="w-75 text-secondary">Featured woman collections that give you another vibe.</p>
+                <p class="shop_now ">Shop Now</p>
+              </div>
+            
+          </div>
+
+          <div class="row gy-3 mt-1">
+            <div class="col-md-6 col-sm-12">
+              <div
+                class="bg-black d-flex justify-content-center align-items-center  position-relative"
+              >
+                <img
+                  src="../../../assets/newArrival3.png"
+                  class="w-100 text-center d-flex justify-content-center"
+                />
+                <div class="position-absolute text-white" style="bottom:2%;left:4%">
+                  <span class="fw-bold">Speakers</span><br>
+                  <span class=" text-secondary">Amazon wireless speakers</span>
+                  <p class="shop_now2">Shop Now</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+              <div class="bg-black d-flex justify-content-center position-relative">
+                <img src="../../../assets/newArrival4.png" style="width: 66%" />
+                <div class="position-absolute text-white" style="bottom:2%;left:4%">
+                  <span class="fw-bold">Perfume</span><br>
+                  <span class=" text-secondary">GUCCI INTENSE OUD EDP</span>
+                  <p class="shop_now2">Shop Now</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== End New Arrival Section ========== -->
+
+    <!-- ========== Start Last Section ========== -->
+    <section class="my-5 py-5" id="last_section">
+      <div class="container">
+        <div class="row mx-5 gy-5">
+          <div class="col-md-4 col-sm-12 text-center">
+            <i
+              class="fa-solid fa-truck-fast bg-black p-3 rounded-5 fs-5 text-white"
+            ></i>
+            <p class="fw-bold fs-5 pt-4">FREE AND FAST DELIVERY</p>
+            <p class="text-muted">Free delivery for all orders over $140</p>
+          </div>
+
+          <div class="col-md-4 col-sm-12 text-center">
+            <i
+              class="fa-solid fa-headset bg-black p-3 rounded-5 fs-5 text-white"
+            ></i>
+            <p class="fw-bold fs-5 pt-4">24/7 CUSTOMER SERVICE</p>
+            <p class="text-muted">Friendly 24/7 customer support</p>
+          </div>
+
+          <div class="col-md-4 col-sm-12 text-center">
+            <i
+              class="fa-solid fa-check bg-black p-3 rounded-5 fs-5 text-white"
+            ></i>
+            <p class="fw-bold fs-5 pt-4">MONEY BACK GUARANTEE</p>
+            <p class="text-muted">We reurn money within 30 days</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== End Last Section ========== -->
+
+    <script src="" async defer></script>
+  </body>
+</html>
+
+
+
+

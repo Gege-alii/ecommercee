@@ -1,0 +1,10 @@
+.product-img {
+    width: 50px;
+    height: auto;
+  }
+  .remove-btn {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+  }
+

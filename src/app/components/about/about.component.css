@@ -1,0 +1,28 @@
+
+.icon{
+    background-color: black;
+    color: white;
+    padding:5% 4%;
+    border-radius: 100%;
+    border: 8px solid #c1c0c1;  /* #e67c7c    #db4444*/
+}
+
+.card_second_section{
+    border: 0.5px solid #c1c0c1; 
+    text-align: center;
+}
+
+.card_second_section:hover{
+    background-color:#db4444 ;
+    transition: 1s all ;
+    
+}
+
+.card_second_section:hover .icon{
+    background-color: white;
+    color: black; border: 8px solid #e67c7c;   
+}
+
+#fourth_section i{
+    border: 8px solid #c1c0c1;
+}

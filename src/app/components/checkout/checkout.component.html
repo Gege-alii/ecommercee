@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+<!-- ========== Start Checkout Section ========== -->
+ <section class="my-5 container"> 
+    <p class="text-muted my-5">Account / My Account / Product / View Cart / <span class="fw-bold text-black">Checkout</span> </p>
+
+    <div class="row gy-5">
+        <div class="col-md-6 col-sm-12">
+            <h2 class="mb-5">Billing Details</h2>
+            <!-- Form Inputs -->
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">First Name<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">Company Name<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">Street Address<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">Apartment, floor, etc. (optional)<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">Town/City<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">Phone Number<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="fs-5 text-muted mb-3">Email Address<span class="text-danger">*</span></label>
+                <input class="form-control w-100 bg-body-tertiary p-2 border-0"/>
+            </div>
+
+            <input type="checkbox" id="form" name="form">
+            <label for="form" class="ps-3"> Save this information for faster check-out next time</label>
+            <br>
+          
+            <!-- End of Form Inputs -->
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5 col-sm-12" >
+            <div class="row gy-4 pt-5" *ngFor="let item of Usercart">
+                <div class="col-md-7 col-sm-12 pt-5 text-center d-flex justify-content-between" >
+                    <img [src]="item.image" class="w-25"/>
+                    <p class="ps-2">{{item.name}}</p>
+                </div>
+
+                <div class="col-md-2"></div>
+                <div class="col-md-3 col-sm-12 pt-5">
+                    <p class="ps-2">{{item.price | currency:"USD"}}</p>
+                    
+                </div>
+
+            </div>
+            <!-- Total and Suntotal -->
+            <div class="my-5">
+                <div class="d-flex justify-content-between fs-5 mt-4 border-bottom border-black pb-4">
+                    <span>Subtotal:</span>
+                    <span>{{total | currency:"USD"}}</span>
+                </div>
+        
+                <div class="d-flex justify-content-between fs-5 border-bottom border-black pb-4 my-4">
+                    <span>Shipping:</span>
+                    <span>Free</span>
+                </div>
+        
+                <div class="d-flex justify-content-between fs-5">
+                    <span>Total:</span>
+                    <span>{{total | currency:"USD"}}</span>
+                </div>
+            </div>
+            <!-- End of Total and Suntotal -->         
+
+
+
+            <div>
+                <div>
+                   <div class="d-flex justify-content-between">
+                    <div> 
+                        <input type="radio" id="Bank" name="fav_language" value="Bank">
+                        <label for="Bank">Bank</label><br>
+                    </div>
+                    <div class="w-50">
+                        <img src="../../../assets/bank1.png" class="w-25"/>
+                        <img src="../../../assets/bank2.png" class="w-25"/>
+                        <img src="../../../assets/bank3.png" class="w-25"/>
+                        <img src="../../../assets/bank4.png" class="w-25"/>
+
+                    </div>
+                   </div>
+                    <input type="radio" id="Cash" name="fav_language" value="Cash">
+                    <label for="Cash"> Cash on delivery</label>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-5">
+                <input class="form-control d-inline w-50 border-black" placeholder="Copoun Code"/>
+                <span class="btn btn-danger px-5 py-3">Apply Copoun</span>
+                </div>
+
+            <button class="btn btn-danger px-5 py-3 mt-5">Place Order</button>
+
+
+        </div>
+
+    </div>
+
+ 
+   
+ </section>
+<!-- ========== End Checkout Section ========== -->
+        <script src="" async defer></script>
+    </body>
+</html>

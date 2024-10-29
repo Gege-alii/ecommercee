@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <!-- ========== Start Sign Up Section ========== -->
+        <section class="my-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 " id="side">
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 p-4 ">
+
+                        <div class="container pt-3" id="right_side">
+                            <p class="text-danger fs-4 pb-3" *ngIf="isExist">The account already exists.Please Login</p>
+
+                            <h2>Create an account</h2>
+                        <p class="py-3 fw-bold">Enter your details below</p>
+                        <form [formGroup]="SignUpForm" (ngSubmit)="signUp(SignUpForm)">
+                            <div>
+                                <input type="text" class="form-control p-3" formControlName="name" placeholder="Name" required/>
+
+                                <div class="alert alert-danger" *ngIf="SignUpForm.get('name')?.errors&&SignUpForm.get('name')?.touched">
+                                    <p *ngIf="SignUpForm.get('name')?.getError('required')">Required Field</p>
+                                    <p *ngIf="SignUpForm.get('name')?.getError('maxlength')">Max Length is 15 </p>
+                                    <p *ngIf="SignUpForm.get('name')?.getError('minlength')">Min Length is 3</p>
+                      
+                                  </div>
+                            </div>
+
+                            <div class="py-5 ">
+                                <input type="email" class="form-control p-3" formControlName="email" placeholder="Email or Phone number" required/>
+                                <div class="alert alert-danger" *ngIf="SignUpForm.get('email')?.errors&&SignUpForm.get('email')?.touched">
+                                    <p *ngIf="SignUpForm.get('email')?.getError('required')">Required Field</p>
+                                    <p *ngIf="SignUpForm.get('email')?.getError('email')">Email is invalid </p>
+                                  </div>
+                            </div>
+                            <div>
+                                <input type="password" class="form-control p-3" formControlName="password" placeholder="Password" required/>
+                                <div class="alert alert-danger" *ngIf="SignUpForm.get('password')?.errors&&SignUpForm.get('password')?.touched">
+                                    <p *ngIf="SignUpForm.get('password')?.getError('required')">Required Field</p>
+                                  </div>
+                            </div>
+
+                            <div class="text-center ">
+                                <div>
+                                    <button class="btn btn-danger mt-5 mb-3 d-block w-100 p-3" [disabled]="SignUpForm.invalid">Create Account</button>
+                                </div>
+
+                                <div>
+                                    <button class="btn btn-outline-dark  d-block w-100 p-3 mb-5">
+                                        <img src="../../../assets/google.png" style="width: 5%;" class="me-3"/>Sign Up with Google
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-center ">Already have an account ? <a routerLink="/login" class="ps-2" id="login_btn">Log in</a></p>
+
+                        </form>
+                        </div>
+
+                       
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+       
+       <!-- ========== End Sign Up Section ========== -->
+       
+        <script src="" async defer></script>
+    </body>
+</html>

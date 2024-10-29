@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    font-family: sans-serif;
+
+}
+
+#flash_section .owl-item , #Explore_Our_Products_Section .owl-item ,#related_items .owl-item,.owl-item{
+    height: 500px !important;
+}
+
+#category_section .owl-item{
+  height: 200px !important;
+}
+
+.owl-theme .owl-nav [class*=owl-] {
+ 
+    background: rgb(240, 240, 240);
+    
+    border-radius: 100%;
+}
+
+#flash_section .owl-theme .owl-dots,
+#flash_section .owl-theme .owl-nav {
+    text-align: unset;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    top: -25%;
+    right: 0%;
+}
+
+/* Styles for the category section carousel */
+#category_section .owl-theme .owl-dots,
+#category_section .owl-theme .owl-nav {
+    text-align: unset;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    top: -95%;
+    right: 0%;
+}
+.title-section {
+    margin-top: 20px; 
+  }
+  
+  .vertical-bar {
+    width: 1.5%;
+    height: 40px;
+    margin-right: 10px; 
+  }
+
+  .discount{
+    top: 4%;
+    left: 4%;
+  }
+
+
+  .heart_eye{
+    top: 4%;
+    right: 4%;
+  }
+
+  .form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: #dc3545;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem #dc35466a;
+}
+
+
+
+.dropdown-menu {
+  --bs-dropdown-zindex: 1000;
+  --bs-dropdown-min-width: 12rem;
+  --bs-dropdown-font-size:1rem;
+  --bs-dropdown-link-active-bg: #dc3545;
+
+  background-color: #6d696d;
+  --bs-dropdown-color: white;  backdrop-filter: blur(20px);
+  
+}
+
+.dropdown-menu .dropdown-item {
+
+  padding: 4% 6%;color: white;
+
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+ left: -140px;
+}
+
+#add_to_cart,#add_to_wishlist,#deleteFromWishlist{
+  cursor: pointer;
+}
+
+
+@media screen and (max-width:500px) {
+  #flash_section .owl-theme .owl-dots,
+  #flash_section .owl-theme .owl-nav {
+      text-align: unset;
+      -webkit-tap-highlight-color: transparent;
+      position: absolute;
+      top: -40%;
+      right: 0%;
+  }
+  
+  #category_section .owl-theme .owl-dots,
+#category_section .owl-theme .owl-nav {
+    text-align: unset;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    top: -140%;
+    right: 0%;
+}
+}

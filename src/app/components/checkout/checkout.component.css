@@ -1,0 +1,5 @@
+input[type="checkbox" i] {
+    accent-color: #dc3545; /* Change color */
+    transform: scale(1.5);
+    color: white;
+}

@@ -1,0 +1,62 @@
+<div class="bg-black d-flex justify-content-center align-items-center">
+<div class="d-flex pt-3">
+  <p class="text-center text-white pe-2">Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</p><a routerLink="/products" class="text-white">Shop now</a>
+
+</div>
+<div>
+
+</div>
+</div>
+<nav class="navbar navbar-expand-lg shadow-sm py-4">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3 " routerLink="#">Exclusive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+          <li class="nav-item" id="home-link">
+            <a class="nav-link text-black" aria-current="page" routerLink="/home" routerLinkActive="activee">Home</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link text-black" routerLink="/contact" routerLinkActive="activee">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" routerLink="/about" routerLinkActive="activee">About</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link text-black" routerLink="/signup" *ngIf="!isLogin" routerLinkActive="activee">Sign Up</a>
+          </li>
+         
+          
+        </ul>
+    
+        <div class="input-group position-relative" >
+            <input type="text" class="form-control bg-body-tertiary p-2" placeholder="What are you looking for?" [(ngModel)]="searchValue">
+            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <div class="position-absolute bg-body-tertiary p-4 w-100 rounded-1" style="top:50px;left:1%;z-index: 9999;" *ngIf="searchValue" >
+              <div *ngFor="let slide of AllProducts | search:searchValue" class="py-3">
+                <a [routerLink]="['/product', slide.id]" class="text-black">{{slide.title}}</a>
+
+              </div>
+            </div>
+          </div>
+          
+        <a *ngIf="isLogin"  routerLink="/wishlist" id="wishlist_icon"><i class="fa-regular fa-heart fs-5" routerLinkActive="bg-danger text-white p-2 rounded-5"></i></a>
+        <a *ngIf="isLogin"  routerLink="/cart" class="nav_icon"><i class="fa-solid fa-cart-shopping fs-5" routerLinkActive="bg-danger text-white p-2  rounded-5"></i></a>
+      <div class="dropdown d-inline" *ngIf="isLogin">
+          <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-user fs-5 "></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/account" routerLinkActive="text-danger"><i class="fa-regular fa-user text-white pe-2"></i> Manage My Account</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping text-white pe-2"></i> My Order</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-xmark text-white pe-2"></i> My Cancellations</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-star text-white pe-2"></i> My Reviews</a></li>
+            <li><a class="dropdown-item" (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket text-white pe-2"></i> Logout</a></li>
+
+          </ul>
+        </div>
+    </div>
+    </div>
+  </nav>

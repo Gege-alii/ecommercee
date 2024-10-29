@@ -1,0 +1,23 @@
+#copyRight{
+    border-top: 1px solid rgb(71, 71, 71);
+}
+
+.col-12 img , #Qr{
+    width: 100%;
+
+}
+
+@media screen and (max-width:500px) {
+    footer{
+        text-align: center;
+    }
+    .col-12 img,#Qr{
+        width: 70%;
+
+    }
+
+    .input-group{
+    
+        margin: auto;
+    }
+}

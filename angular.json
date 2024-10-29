@@ -23,9 +23,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "external": {
-              "jquery": "jquery"
-            },
          
         
             "allowedCommonJsDependencies": ["jquery", "sweetalert2"],

@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "external": {g
+            "external": {
               "jquery": "jquery"
             },
          
